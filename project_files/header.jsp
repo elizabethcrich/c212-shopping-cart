@@ -1,3 +1,7 @@
+<jsp:include page="controller.jsp">
+	<jsp:param name="show" value="request.getParameter('show')" />
+	<jsp:param name="action" value="request.getParameter('action')" />
+</jsp:include>
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Rammetto+One" rel="stylesheet">
 <style type="text/css">
         h1, h2 { font-family: "Rammetto One", Arial, sans-serif; }
@@ -21,6 +25,6 @@
                         </form>
                 </td>
                 <td><a href="?action=view_cart">View Cart</a></td>
-                <td><a href="?action=browse">Browse Merchandise</a></td>
+                <td><a href="?action=browse&show=all">Browse Merchandise</a></td> <!-- added show=all to test controller -->
         </tr>
 </table>
