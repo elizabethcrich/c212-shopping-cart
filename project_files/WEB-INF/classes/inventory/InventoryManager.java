@@ -1,11 +1,15 @@
+package inventory;
+
 import java.io.*;
 import java.util.*;
 
 public class InventoryManager {
+  final static String FILEOUT = "D:\\ZAB (D)\\IU Courses\\C212\\FinalProject\\GitRepo\\c212-shopping-cart\\project_files\\database";
+  final static String FILEIN = "D:\\ZAB (D)\\IU Courses\\C212\\FinalProject\\GitRepo\\c212-shopping-cart\\project_files\\inventory.txt";
   
   public static void main(String[] args) throws IOException {
     Map<Object, String> inventory = new HashMap<>();
-    Scanner scan = new Scanner(new File(args[0]));
+    Scanner scan = new Scanner(new File(FILEIN));
 
     while (scan.hasNextLine())
     {
@@ -20,16 +24,16 @@ public class InventoryManager {
         
         inventory.put((Object) item, quantity);
     }  
-    FileOutputStream fouts = new FileOutputStream("database");
+    FileOutputStream fouts = new FileOutputStream(FILEOUT);
     ObjectOutputStream obos = new ObjectOutputStream(fouts);
     obos.writeObject(inventory);
     
   }
   
-  public static Map displayInventory(String fileName) throws IOException, FileNotFoundException, ClassNotFoundException {
-    FileInputStream fins = new FileInputStream(fileName);
+  public static Map displayInventory() throws IOException, FileNotFoundException, ClassNotFoundException {
+    FileInputStream fins = new FileInputStream(FILEOUT);
     ObjectInputStream obis = new ObjectInputStream(fins);
-    Map<Item, String> inventory = (HashMap<Item, String>) obis.readObject(); // unchecked cast
+    @SuppressWarnings("unchecked") Map<Item, String> inventory = (HashMap<Item, String>) obis.readObject();
     obis.close();
     return inventory;
   }
