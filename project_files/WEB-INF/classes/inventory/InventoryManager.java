@@ -4,8 +4,12 @@ import java.io.*;
 import java.util.*;
 
 public class InventoryManager {
-  final static String DATABASE = "..\\database";
-  final static String INIT = "..\\inventoryInit.txt";
+  // run in Tomcat
+  final static String DATABASE = "../database";
+  final static String INIT = "../inventoryInit.txt";
+  // run in DrJava (windows)
+//  final static String DATABASE = "..\\database";
+//  final static String INIT = "..\\inventoryInit.txt";
   
   public static void main(String[] args) throws IOException {
     Map<Item, Integer> inventory = new HashMap<>(); // this was initialized as <Object, String> - why?

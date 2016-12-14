@@ -4,9 +4,9 @@ import java.util.*;
 import java.io.*;
 
 public class InventoryTest {
-  // Uncomment methods to test
+  // comment/uncomment methods to test
   public static void main(String[] args) throws IOException, ClassNotFoundException {
-    //displayInventoryTest();
+    displayInventoryTest();
     updateInventoryTest();
   }
   public static void displayInventoryTest() throws IOException, ClassNotFoundException {

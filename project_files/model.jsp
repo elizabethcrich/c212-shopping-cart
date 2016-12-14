@@ -9,10 +9,9 @@
 <ul>
 <%
 
-    @SuppressWarnings("unchecked") Map<Item, String> inventory = (HashMap<Item, String>) InventoryManager.displayInventory(); // returns HashMap
-    int sku = 100;
+    @SuppressWarnings("unchecked") Map<Item, String> inventory = (HashMap<Item, String>) InventoryManager.getInventory(); // returns HashMap
     for (Item item : inventory.keySet()) {
-      out.println("<li><a href='model.jsp?show=" + sku + "'>" 
+      out.println("<li><a href='model.jsp?show=" + item.getSku() + "'>" 
 					+ item.getName() + "</a> $" + item.getPrice() 
 					+ "</li>");
     }
@@ -23,10 +22,10 @@
 <%   } else { %>
 	<%--<jsp:include page="header.jsp"></jsp:include>--%>
 	<div class="item">
-			<% out.println("<h3>" + item.getName() + "</h3>"); %>
+			<%--<% out.println("<h3>" + item.getName() + "</h3>"); %>
 			<% out.println("<p>Price: $" + item.getPrice() + " || <a href='index.jsp?action=add&what=" + request.getParameter("show") + "'>Add to cart</a></p>"); %>
 			<% out.println("<p>Quantity: " + inventory.get(item)); %>
-			<% out.println("<img src='" + item.getImage() + "' />"); %>
+			<% out.println("<img src='" + item.getImage() + "' />"); %>--%>
 	</div>
 	<%--<jsp:include page="footer.jsp"></jsp:include>--%>
 <%      }
