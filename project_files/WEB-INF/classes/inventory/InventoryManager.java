@@ -10,20 +10,24 @@ public class InventoryManager {
   public static void main(String[] args) throws IOException {
     Map<Item, Integer> inventory = new HashMap<>(); // this was initialized as <Object, String> - why?
     Scanner scan = new Scanner(new File(INIT));
-
     while (scan.hasNextLine())
     {
         Scanner line = new Scanner(scan.nextLine());
         line.useDelimiter("\t");
         
         Item item = new Item();
+        item.sku = Integer.parseInt(line.next().trim());
         item.name = line.next().trim();
         item.price = Double.parseDouble(line.next().trim());
         Integer quantity = Integer.parseInt(line.next().trim());
         item.image = line.next().trim();
         
         inventory.put(item, quantity); // this was cast to Object - why?
-    }  
+    }
+    updateDatabase(inventory);
+  }
+  
+  public static void updateDatabase(Map<Item, Integer> inventory) throws IOException, FileNotFoundException {
     FileOutputStream fouts = new FileOutputStream(DATABASE);
     ObjectOutputStream obos = new ObjectOutputStream(fouts);
     obos.writeObject(inventory);
@@ -37,19 +41,35 @@ public class InventoryManager {
     return inventory;
   }
   
-  // This should work to update after checkout and from admin screen
-  public static void updateInventory(Map<Item, Integer> m) throws IOException, ClassNotFoundException {
+  public static String updateInventory(Map<Item, Integer> cart) throws IOException, ClassNotFoundException {
     @SuppressWarnings("unchecked") Map<Item, Integer> inventory = getInventory(); // returns HashMap
-    
-    for (Item update : m.keySet()) {
+    String message = "";
+    // Check cart against inventory
+    for (Item update : cart.keySet()) {
       for (Item item : inventory.keySet()) {
-        // maybe should be using a sku # ?
-        if (update.equals(item)) {
-          //debugging
-          System.out.println("works");
+        // If match found
+        if (update.getSku() == item.getSku()) {
+          // Calculate new stock
+          int newStock = inventory.get(item) - cart.get(update);
+          // Send error if update is larger than stock
+          if (newStock < 0) { 
+            newStock = inventory.get(item); 
+            message += "\nI'm sorry, we do not have enough in stock of an item you selected. It has been removed from your purchase."
+              + "\nItem removed: " + item.getName()
+              + ", Current stock: " + inventory.get(item);
+          }
+          // Otherwise send confirmation
+          else {
+            message += "\nItem purchased: " + item.getName() 
+              + ", Quantity: " + inventory.get(item);
+          }
+          inventory.put(item, newStock);
         }
       }
     }
+    updateDatabase(inventory);
+    // There should be some kind of monetary transaction... right now FREE
+    return message + "\n";
   }
   
 }
