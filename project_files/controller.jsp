@@ -1,3 +1,4 @@
+<%@ page language="java" import="java.util.*" %>
 <%-- from Index.jsp --%>
 <% String action = request.getParameter("action");
 	// Action 
@@ -14,7 +15,7 @@
 <%
 			out.println("You want to View the Cart: <ul> "); // + session);
 			int i = 0;
-			for (Enumeration<Object> e = session.getAttributeNames(); e.hasMoreElements(); i++) {
+			for (Enumeration e = session.getAttributeNames(); e.hasMoreElements(); i++) {
 				String attribName = (String) e.nextElement();
 				Object attribValue = session.getAttribute(attribName);
 				out.println("<li>" + attribName + ":" + attribValue);
@@ -36,7 +37,7 @@
 		} 
 		// Action -- Reset
 		else if (action.equals("reset")) {
-			for (Enumeration<Object> e = session.getAttributeNames(); e.hasMoreElements(); ) {
+			for (Enumeration e = session.getAttributeNames(); e.hasMoreElements(); ) {
 				String attribName = (String) e.nextElement();
 				session.removeAttribute(attribName);
 			}
@@ -71,7 +72,7 @@
 		// Show -- item
 		else { %>
 			<jsp:include page="model.jsp">
-			<jsp:param name="show" value="request.getParameter(\"show\")" />
+			<jsp:param name="show" value="request.getParameter('show')" />
 			</jsp:include>
 <%      }
 	}
