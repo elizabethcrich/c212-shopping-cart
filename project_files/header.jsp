@@ -1,6 +1,6 @@
 <jsp:include page="controller.jsp">
-	<jsp:param name="show" value="request.getParameter('show')" />
-	<jsp:param name="action" value="request.getParameter('action')" />
+	<jsp:param name="show" value="request.getParameter(\"show\")" />
+	<jsp:param name="action" value="request.getParameter(\"action\")" />
 </jsp:include>
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Rammetto+One" rel="stylesheet">
 <style type="text/css">
