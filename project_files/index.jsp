@@ -49,26 +49,26 @@
      } else if (action.equals("checkout")) {
 		 // checkout here
 			out.println("<p>Checking out...</p>");
-			out.println("<p>Items purchased: </p>");
+			//out.println("<p>Items purchased: </p>");
 		 // convert cart to HashMap
+			Map<Item, Integer> cart = new HashMap<Item, Integer>();
 			int i = 0;
 			for (Enumeration e = session.getAttributeNames(); e.hasMoreElements(); i++) {
 				String attribName = (String) e.nextElement();
 				Object attribValue = session.getAttribute(attribName);
 				Item item = new Item();
 				item = InventoryManager.getItem(Integer.parseInt(attribName));
-				out.println("<li>" + item.getName() + " : " + attribValue);
-				// Map<Item, Integer> cart = new HashMap<>();
-				// cart.put(item, attribValue);
-				
+				//out.println("<li>" + item.getName() + " : " + attribValue);
+				cart.put(item, (Integer) attribValue);
 			}
-		 // send cart to updateInventory
 		 // reset cart
 			for (Enumeration e = session.getAttributeNames(); e.hasMoreElements(); ) {
 				String attribName = (String) e.nextElement();
 				session.removeAttribute(attribName);
 			}
+		 // send cart to updateInventory
 		 // display completion to user
+			out.println(InventoryManager.updateInventory(cart));
 	 } else if (action.equals("admin")) { %>
 		<jsp:include page="admin.jsp">
 		<jsp:param name="view" value="all" />
