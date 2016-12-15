@@ -19,8 +19,11 @@
 			item = InventoryManager.getItem(Integer.parseInt(attribName));
          out.println("<li>" + item.getName() + " : " + attribValue);
        }
-       if (i == 0) out.println( "Your cart is empty." );
-       else out.println("</ul><p>Click <a href=\"?action=reset\">here</a> to reset your cart.");
+       if (i == 0) { out.println( "Your cart is empty." ); }
+       else { 
+		out.println("</ul><p>Click <a href=\"?action=reset\">here</a> to reset your cart.</p>");
+		out.println("</ul><p>Click <a href=\"?action=checkout\">here</a> to check out.</p>");
+	   }
      } else if (action.equals("add")) {
 					Item item = new Item();
 					item = InventoryManager.getItem(Integer.parseInt(request.getParameter("what")));
@@ -42,7 +45,30 @@
      } else if (action.equals("search")) {
        String search = request.getParameter("for");
        out.println("Searching for... <font size=+3>" + ( search == null ? "undefined" : search ) + "</font>");
-     } else {
+     }  else if (action.equals("checkout")) {
+		 // checkout here
+			out.println("<p>Checking out...</p>");
+			out.println("<p>Items purchased: </p>");
+		 // convert cart to HashMap
+			int i = 0;
+			for (Enumeration e = session.getAttributeNames(); e.hasMoreElements(); i++) {
+				String attribName = (String) e.nextElement();
+				Object attribValue = session.getAttribute(attribName);
+				Item item = new Item();
+				item = InventoryManager.getItem(Integer.parseInt(attribName));
+				out.println("<li>" + item.getName() + " : " + attribValue);
+				// Map<Item, Integer> cart = new HashMap<>();
+				// cart.put(item, attribValue);
+				
+			}
+		 // send cart to updateInventory
+		 // reset cart
+			for (Enumeration e = session.getAttributeNames(); e.hasMoreElements(); ) {
+				String attribName = (String) e.nextElement();
+				session.removeAttribute(attribName);
+			}
+		 // display completion to user
+	 } else {
        out.println("Not sure what " + request.getParameter("action") + " is... ");
      }
    } else {
