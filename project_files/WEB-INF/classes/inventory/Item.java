@@ -25,7 +25,7 @@ public class Item implements Serializable {
     return this.name;
   }
   public double getPrice() {
-    return this.price;
+    return String.format("%.2f", this.price);
   }
   public String getImage() {
     return this.image;
