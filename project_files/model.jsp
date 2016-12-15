@@ -7,25 +7,26 @@
 
 <p>Here's what we are selling: </p>
 <ul>
-<%
+  <li> <a href="model.jsp?action=browse&show=100">Low Gap Trail Map</a></li>
+  <li> <a href="model.jsp?show=200">Pate Hollow Trail Map</a></li>
+  <li> <a href="model.jsp?show=300">Three Lakes Trail Map</a></li>
+  <li> <a href="model.jsp?show=400">Nebo Ridge Trail Map</a></li>
+  <li> <a href="model.jsp?show=500">Peninsula Trail Map</a></li>
+  <li> <a href="model.jsp?show=600">Sycamore Loop Trail Map</a></li>
+  <li> <a href="model.jsp?show=700">Tecumseh Trail Map</a></li>
+  <li> <a href="model.jsp?show=800">Adventure Hiking Trail Map</a></li>
+  <li> <a href="model.jsp?show=900">Knobstone Trail Map</a></li>
 
-    @SuppressWarnings("unchecked") Map<Item, String> inventory = (HashMap<Item, String>) InventoryManager.getInventory(); // returns HashMap
-    for (Item item : inventory.keySet()) {
-      out.println("<li><a href='model.jsp?show=" + item.getSku() + "'>" 
-					+ item.getName() + "</a> $" + item.getPrice() 
-					+ "</li>");
-    }
-
-%>
 </ul>
 
 <%   } else { %>
 	<%--<jsp:include page="header.jsp"></jsp:include>--%>
-	<div class="item">
-			<%--<% out.println("<h3>" + item.getName() + "</h3>"); %>
-			<% out.println("<p>Price: $" + item.getPrice() + " || <a href='index.jsp?action=add&what=" + request.getParameter("show") + "'>Add to cart</a></p>"); %>
-			<% out.println("<p>Quantity: " + inventory.get(item)); %>
-			<% out.println("<img src='" + item.getImage() + "' />"); %>--%>
+	<% Item item = new Item();
+		item = InventoryManager.getItem(request.getParameter("show")); %> 
+	<div>
+			<% out.println("<h3>" + item.getName() + "</h3>"); %>
+			<% out.println("<p>Price: $" + item.getPrice() + " || <a href='index.jsp?action=add&what=" + item.getSku() + "'>Add to cart</a></p>"); %>
+			<% out.println("<img src='" + item.getImage() + "' />"); %>
 	</div>
 	<%--<jsp:include page="footer.jsp"></jsp:include>--%>
 <%      }

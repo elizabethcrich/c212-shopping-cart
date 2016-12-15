@@ -31,6 +31,18 @@ public class InventoryManager {
     updateDatabase(inventory);
   }
   
+  public static Item getItem(Integer sku) throws IOException, ClassNotFoundException {
+    @SuppressWarnings("unchecked") Map<Item, Integer> inventory = getInventory(); // returns HashMap
+    Item temp = new Item();
+    for (Item item : inventory.keySet()) {
+      if (sku == item.getSku()) {
+        temp = item;
+        break;
+      }
+    }
+    return temp;
+  }
+  
   public static void updateDatabase(Map<Item, Integer> inventory) throws IOException, FileNotFoundException {
     FileOutputStream fouts = new FileOutputStream(DATABASE);
     ObjectOutputStream obos = new ObjectOutputStream(fouts);

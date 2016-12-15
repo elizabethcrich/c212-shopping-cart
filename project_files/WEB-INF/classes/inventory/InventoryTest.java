@@ -8,6 +8,7 @@ public class InventoryTest {
   public static void main(String[] args) throws IOException, ClassNotFoundException {
     displayInventoryTest();
     updateInventoryTest();
+    getItemTest();
   }
   public static void displayInventoryTest() throws IOException, ClassNotFoundException {
     @SuppressWarnings("unchecked") Map<Item, Integer> inventory = InventoryManager.getInventory(); // returns HashMap
@@ -23,5 +24,8 @@ public class InventoryTest {
     cart.put(b, 1);
     System.out.println(InventoryManager.updateInventory(cart));
     //displayInventoryTest();
+  }
+  public static void getItemTest() throws IOException, ClassNotFoundException {
+    System.out.println(InventoryManager.getItem(500));
   }
 }

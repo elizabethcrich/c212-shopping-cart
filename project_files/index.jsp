@@ -19,15 +19,17 @@
        if (i == 0) out.println( "Your cart is empty." );
        else out.println("</ul><p>Click <a href=\"?action=reset\">here</a> to reset your cart.");
      } else if (action.equals("add")) {
-       String what = request.getParameter("what");
-       if (what != null) {
-         Object howMany = session.getAttribute(what);
-         if (howMany == null) {
-           session.setAttribute(what, new Integer(1));
-         } else {
-           session.setAttribute(what, 1 + (Integer)howMany);
+		Item item = new Item();
+		item = InventoryManager.getItem(request.getParameter("what"));
+		String what = request.getParameter("what");
+		if (what != null) {
+			Object howMany = session.getAttribute(what);
+			if (howMany == null) {
+			session.setAttribute(what, new Integer(1));
+			} else {
+			session.setAttribute(what, 1 + (Integer)howMany);
          }
-       } out.println("The item (" + request.getParameter("what") + ") has been added to your cart.");
+       } out.println("The item " + item.getName() + " has been added to your cart.");
      } else if (action.equals("reset")) {
        for (Enumeration e = session.getAttributeNames(); e.hasMoreElements(); ) {
          String attribName = (String) e.nextElement();
