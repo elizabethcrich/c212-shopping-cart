@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" %>
+<%@ page import="inventory.Item, inventory.InventoryManager" %>
 
 <jsp:include page="header.jsp"></jsp:include>
 
@@ -20,7 +21,7 @@
        else out.println("</ul><p>Click <a href=\"?action=reset\">here</a> to reset your cart.");
      } else if (action.equals("add")) {
 		Item item = new Item();
-		item = InventoryManager.getItem(request.getParameter("what"));
+		item = InventoryManager.getItem(Integer.parseInt(request.getParameter("what")));
 		String what = request.getParameter("what");
 		if (what != null) {
 			Object howMany = session.getAttribute(what);

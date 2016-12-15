@@ -5,14 +5,15 @@ import java.util.*;
 
 public class InventoryManager {
   // run in Tomcat
-  final static String DATABASE = "../database";
   final static String INIT = "../inventoryInit.txt";
-  // run in DrJava (windows)
+//  final static String DATABASE = "../database"; // ABANDON DATABASE!
+//  // run in DrJava (windows)
 //  final static String DATABASE = "..\\database";
 //  final static String INIT = "..\\inventoryInit.txt";
   
+  static Map<Item, Integer> inventory = new HashMap<>();
+  
   public static void main(String[] args) throws IOException {
-    Map<Item, Integer> inventory = new HashMap<>(); // this was initialized as <Object, String> - why?
     Scanner scan = new Scanner(new File(INIT));
     while (scan.hasNextLine())
     {
@@ -26,39 +27,30 @@ public class InventoryManager {
         Integer quantity = Integer.parseInt(line.next().trim());
         item.image = line.next().trim();
         
-        inventory.put(item, quantity); // this was cast to Object - why?
+        inventory.put(item, quantity);
     }
-    updateDatabase(inventory);
+    //updateDatabase(inventory);
+    
+    //debugging
+    System.out.println(inventory);
   }
   
-  public static Item getItem(Integer sku) throws IOException, ClassNotFoundException {
-    @SuppressWarnings("unchecked") Map<Item, Integer> inventory = getInventory(); // returns HashMap
-    Item temp = new Item();
-    for (Item item : inventory.keySet()) {
-      if (sku == item.getSku()) {
-        temp = item;
-        break;
-      }
-    }
-    return temp;
-  }
-  
-  public static void updateDatabase(Map<Item, Integer> inventory) throws IOException, FileNotFoundException {
-    FileOutputStream fouts = new FileOutputStream(DATABASE);
-    ObjectOutputStream obos = new ObjectOutputStream(fouts);
-    obos.writeObject(inventory);
-  }
-  
-  public static Map getInventory() throws IOException, FileNotFoundException, ClassNotFoundException {
-    FileInputStream fins = new FileInputStream(DATABASE);
-    ObjectInputStream obis = new ObjectInputStream(fins);
-    @SuppressWarnings("unchecked") Map<Item, Integer> inventory = (HashMap<Item, Integer>) obis.readObject();
-    obis.close();
+  public static Map getInventory() {
     return inventory;
   }
   
-  public static String updateInventory(Map<Item, Integer> cart) throws IOException, ClassNotFoundException {
-    @SuppressWarnings("unchecked") Map<Item, Integer> inventory = getInventory(); // returns HashMap
+  public static Item getItem(Integer sku) {
+    Item i = new Item();
+    for (Item item : inventory.keySet()) {
+      if (sku == item.getSku()) {
+        i = item;
+        break;
+      }
+    }
+    return i;
+  }
+  
+  public static String updateInventory(Map<Item, Integer> cart) throws IOException {
     String message = "";
     // Check cart against inventory
     for (Item update : cart.keySet()) {
@@ -83,9 +75,27 @@ public class InventoryManager {
         }
       }
     }
-    updateDatabase(inventory);
+    
+    //debugging
+    System.out.println(inventory);
+    
+    //updateDatabase(inventory);
     // There should be some kind of monetary transaction... right now FREE
     return message + "\n";
   }
+  
+//  public static void updateDatabase(Map<Item, Integer> inventory) throws IOException, FileNotFoundException {
+//    FileOutputStream fouts = new FileOutputStream(DATABASE);
+//    ObjectOutputStream obos = new ObjectOutputStream(fouts);
+//    obos.writeObject(inventory);
+//  }
+  
+//  public static Map getInventory() throws IOException, FileNotFoundException, ClassNotFoundException {
+//    FileInputStream fins = new FileInputStream(DATABASE);
+//    ObjectInputStream obis = new ObjectInputStream(fins);
+//    @SuppressWarnings("unchecked") Map<Item, Integer> inventory = (HashMap<Item, Integer>) obis.readObject();
+//    obis.close();
+//    return inventory;
+//  }
   
 }

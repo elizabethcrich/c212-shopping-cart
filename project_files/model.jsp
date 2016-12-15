@@ -22,7 +22,7 @@
 <%   } else { %>
 	<%--<jsp:include page="header.jsp"></jsp:include>--%>
 	<% Item item = new Item();
-		item = InventoryManager.getItem(request.getParameter("show")); %> 
+			item = InventoryManager.getItem(Integer.parseInt(request.getParameter("show"))); %> 
 	<div>
 			<% out.println("<h3>" + item.getName() + "</h3>"); %>
 			<% out.println("<p>Price: $" + item.getPrice() + " || <a href='index.jsp?action=add&what=" + item.getSku() + "'>Add to cart</a></p>"); %>

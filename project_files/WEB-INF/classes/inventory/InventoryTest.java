@@ -25,7 +25,7 @@ public class InventoryTest {
     System.out.println(InventoryManager.updateInventory(cart));
     //displayInventoryTest();
   }
-  public static void getItemTest() throws IOException, ClassNotFoundException {
+  public static void getItemTest() {
     System.out.println(InventoryManager.getItem(500));
   }
 }
