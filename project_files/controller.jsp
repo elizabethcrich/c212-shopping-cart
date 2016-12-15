@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" %>
+
 <%-- from Index.jsp --%>
 <% String action = request.getParameter("action");
 	// Action 
@@ -71,9 +72,7 @@
 <%  	} 
 		// Show -- item
 		else { %>
-			<jsp:include page="model.jsp">
-			<jsp:param name="show" value="request.getParameter('show')" />
-			</jsp:include>
+			<jsp:include page="model.jsp"></jsp:include>
 <%      }
 	}
 	// Show -- null

@@ -1,3 +1,5 @@
+<%@ page language="java" import="java.util.*" %>
+
 <jsp:include page="header.jsp"></jsp:include>
 
 <% String show = request.getParameter("show");

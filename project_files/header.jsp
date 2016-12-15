@@ -1,7 +1,6 @@
-<jsp:include page="controller.jsp">
-	<jsp:param name="show" value="request.getParameter('show')" />
-	<jsp:param name="action" value="request.getParameter('action')" />
-</jsp:include>
+<%@ page language="java" import="java.util.*" %>
+
+<jsp:include page="controller.jsp"></jsp:include>
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Rammetto+One" rel="stylesheet">
 <style type="text/css">
         h1, h2 { font-family: "Rammetto One", Arial, sans-serif; }
