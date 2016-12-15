@@ -7,21 +7,7 @@
         td form { margin:0; }
         .main { width: 840px; margin: 0 auto; padding: 10px 20px; background-color: #FFFFFF; }
 		.signature { width: 840px; margin: 0 auto; padding: 10px 20px; text-align: center; }
+		.main .main { width: 800px; } /* worst solution ever */
 </style>
 
 <div class="main">
-<h1><a href="/shopping-cart">Welcome to the store!</a></h1>
-<table>
-        <tr>
-                <td>Search: </td>
-                <td>
-                        <form>
-                                <input type="text" name="for">
-                                <input type="hidden" name="action" value="search">
-                        </form>
-                </td>
-                <td><a href="?action=view_cart">View Cart</a></td>
-                <td><a href="?action=browse">Browse Merchandise</a></td>
-                <td><a href="?action=admin">Administration</a></td>
-        </tr>
-</table>

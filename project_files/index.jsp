@@ -2,6 +2,7 @@
 <%@ page import="inventory.Item, inventory.InventoryManager" %>
 
 <jsp:include page="header.jsp"></jsp:include>
+<jsp:include page="menu.jsp"></jsp:include>
 
 <% String action = request.getParameter("action");
    if (action != null) {

@@ -1,6 +1,8 @@
 <%@ page language="java" import="java.util.*" %>
 <%@ page import="inventory.Item, inventory.InventoryManager" %>
 
+<jsp:include page="header.jsp"></jsp:include>
+
 <% String show = request.getParameter("show");
    if (show != null) {
      if (show.equals("all")) { %>
@@ -32,3 +34,5 @@
 
    }
  %>
+
+<jsp:include page="footer.jsp"></jsp:include>
