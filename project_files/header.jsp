@@ -21,6 +21,6 @@
                         </form>
                 </td>
                 <td><a href="?action=view_cart">View Cart</a></td>
-                <td><a href="?action=browse&show=all">Browse Merchandise</a></td> <!-- added show=all to test controller -->
+                <td><a href="?action=browse">Browse Merchandise</a></td>
         </tr>
 </table>

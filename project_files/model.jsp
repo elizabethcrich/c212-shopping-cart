@@ -7,7 +7,7 @@
 
 <p>Here's what we are selling: </p>
 <ul>
-  <li> <a href="model.jsp?action=browse&show=100">Low Gap Trail Map</a></li>
+  <li> <a href="model.jsp?show=100">Low Gap Trail Map</a></li>
   <li> <a href="model.jsp?show=200">Pate Hollow Trail Map</a></li>
   <li> <a href="model.jsp?show=300">Three Lakes Trail Map</a></li>
   <li> <a href="model.jsp?show=400">Nebo Ridge Trail Map</a></li>
