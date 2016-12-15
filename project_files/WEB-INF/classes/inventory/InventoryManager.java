@@ -77,7 +77,7 @@ public class InventoryManager {
           // Otherwise send confirmation
           else {
             message += "\nItem purchased: " + item.getName() 
-              + ", Quantity: " + inventory.get(item);
+              + ", Quantity: " + cart.get(update);
           }
           inventory.put(item, newStock);
         }
