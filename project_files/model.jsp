@@ -20,15 +20,15 @@
 </ul>
 
 <%   } else { %>
-	<%--<jsp:include page="header.jsp"></jsp:include>--%>
-	<% Item item = new Item();
-		item = InventoryManager.getItem(request.getParameter("show")); %> 
-	<div>
-			<% out.println("<h3>" + item.getName() + "</h3>"); %>
-			<% out.println("<p>Price: $" + item.getPrice() + " || <a href='index.jsp?action=add&what=" + item.getSku() + "'>Add to cart</a></p>"); %>
-			<% out.println("<img src='" + item.getImage() + "' />"); %>
-	</div>
-	<%--<jsp:include page="footer.jsp"></jsp:include>--%>
+        <%--<jsp:include page="header.jsp"></jsp:include>--%>
+        <% Item item = new Item();
+                        item = InventoryManager.getItem(Integer.parseInt(request.getParameter("show"))); %>
+        <div>
+                        <% out.println("<h3>" + item.getName() + "</h3>"); %>
+                        <% out.println("<p>Price: $" + item.getPrice() + " || <a href='index.jsp?action=add&what=" + item.getSku() + "'>Add to cart</a></p>"); %>
+                        <% out.println("<img src='" + item.getImage() + "' width='600' />"); %>
+        </div>
+        <%--<jsp:include page="footer.jsp"></jsp:include>--%>
 <%      }
    }   else {
 

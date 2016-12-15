@@ -5,7 +5,7 @@ import java.util.*;
 
 public class InventoryManager {
   // run in Tomcat
-  final static String DATABASE = "../database";
+  final static String DATABASE = "/u/ecrichlo/c212-workspace/apache-tomcat-7.0.35/webapps/shopping-cart/WEB-INF/database";
   final static String INIT = "../inventoryInit.txt";
   // run in DrJava (windows)
 //  final static String DATABASE = "..\\database";
