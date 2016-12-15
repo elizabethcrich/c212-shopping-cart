@@ -22,5 +22,6 @@
                 </td>
                 <td><a href="?action=view_cart">View Cart</a></td>
                 <td><a href="?action=browse">Browse Merchandise</a></td>
+                <td><a href="?action=admin">Administration</a></td>
         </tr>
 </table>

@@ -45,7 +45,7 @@
      } else if (action.equals("search")) {
        String search = request.getParameter("for");
        out.println("Searching for... <font size=+3>" + ( search == null ? "undefined" : search ) + "</font>");
-     }  else if (action.equals("checkout")) {
+     } else if (action.equals("checkout")) {
 		 // checkout here
 			out.println("<p>Checking out...</p>");
 			out.println("<p>Items purchased: </p>");
@@ -68,7 +68,11 @@
 				session.removeAttribute(attribName);
 			}
 		 // display completion to user
-	 } else {
+	 } else if (action.equals("admin")) { %>
+		<jsp:include page="admin.jsp">
+		<jsp:param name="view" value="all" />
+		</jsp:include>
+<%	 } else {
        out.println("Not sure what " + request.getParameter("action") + " is... ");
      }
    } else {
