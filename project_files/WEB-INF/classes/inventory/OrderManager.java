@@ -9,7 +9,7 @@ public class OrderManager {
   // run in DrJava (windows)
   //final static String ORDERS = "..\\orders";
   
-  static int orderNumber = 0;
+  static int orderNumber;
   public static void main(String[] args) throws IOException {
     initializeOrders();
   }
@@ -42,6 +42,7 @@ public class OrderManager {
   }
   
   public static void initializeOrders() throws IOException, FileNotFoundException {
+	orderNumber = 0;
     Map<Integer, Map<Item, Integer>> orders = new HashMap<>();
     FileOutputStream fouts = new FileOutputStream(ORDERS);
     ObjectOutputStream obos = new ObjectOutputStream(fouts);
