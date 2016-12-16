@@ -22,8 +22,10 @@ public class InventoryTest {
     Map<Item, Integer> cart = new HashMap<Item, Integer>();
     cart.put(a, 4);
     cart.put(b, 1);
-    System.out.println(InventoryManager.updateInventory(cart));
-    //displayInventoryTest();
+    @SuppressWarnings("unchecked") ArrayList<String> response = InventoryManager.updateInventory(cart); // returns ArrayList
+    for (String line : response) {
+      System.out.println(line);
+    }
   }
   public static void getItemTest() throws IOException, ClassNotFoundException {
     System.out.println(InventoryManager.getItem(500));

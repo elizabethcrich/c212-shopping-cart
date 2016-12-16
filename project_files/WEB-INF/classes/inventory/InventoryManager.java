@@ -8,11 +8,11 @@ public class InventoryManager {
   final static String DATABASE = "/u/ecrichlo/c212-workspace/apache-tomcat-7.0.35/webapps/shopping-cart/WEB-INF/database";
   final static String INIT = "../inventoryInit.txt";
   // run in DrJava (windows)
-//  final static String DATABASE = "..\\database";
-//  final static String INIT = "..\\inventoryInit.txt";
+  //final static String DATABASE = "..\\database";
+  //final static String INIT = "..\\inventoryInit.txt";
   
   public static void main(String[] args) throws IOException {
-    Map<Item, Integer> inventory = new HashMap<>(); // this was initialized as <Object, String> - why?
+    Map<Item, Integer> inventory = new HashMap<>();
     Scanner scan = new Scanner(new File(INIT));
     while (scan.hasNextLine())
     {
@@ -26,7 +26,7 @@ public class InventoryManager {
         Integer quantity = Integer.parseInt(line.next().trim());
         item.image = line.next().trim();
         
-        inventory.put(item, quantity); // this was cast to Object - why?
+        inventory.put(item, quantity);
     }
     updateDatabase(inventory);
   }
@@ -57,9 +57,10 @@ public class InventoryManager {
     return inventory;
   }
   
-  public static String updateInventory(Map<Item, Integer> cart) throws IOException, ClassNotFoundException {
+  public static ArrayList updateInventory(Map<Item, Integer> cart) throws IOException, ClassNotFoundException {
     @SuppressWarnings("unchecked") Map<Item, Integer> inventory = getInventory(); // returns HashMap
-    String message = "";
+    ArrayList<String> message = new ArrayList<String>();
+    double cost = 0;
     // Check cart against inventory
     for (Item update : cart.keySet()) {
       for (Item item : inventory.keySet()) {
@@ -70,22 +71,23 @@ public class InventoryManager {
           // Send error if update is larger than stock
           if (newStock < 0) { 
             newStock = inventory.get(item); 
-            message += "\nI'm sorry, we do not have enough in stock of an item you selected. It has been removed from your purchase."
-              + "\nItem removed: " + item.getName()
-              + ", Current stock: " + inventory.get(item);
+            message.add("I'm sorry, we do not have enough in stock of an item you selected. It has been removed from your purchase.");
+            message.add("Item removed: " + item.getName()
+              + ", Current stock: " + inventory.get(item));
           }
           // Otherwise send confirmation
           else {
-            message += "\nItem purchased: " + item.getName() 
-              + ", Quantity: " + cart.get(update);
+            message.add("Item purchased: " + item.getName() 
+              + ", Quantity: " + cart.get(update));
+            cost = cost + (Double.parseDouble(item.getPrice()) * cart.get(update));
           }
           inventory.put(item, newStock);
         }
       }
     }
     updateDatabase(inventory);
-    // There should be some kind of monetary transaction... right now FREE
-    return message + "\n";
+    message.add("Total cost: $" + String.format("%.2f", cost));
+    return message;
   }
   
 }

@@ -67,8 +67,13 @@
 				session.removeAttribute(attribName);
 			}
 		 // send cart to updateInventory
+			ArrayList<String> result = InventoryManager.updateInventory(cart);
 		 // display completion to user
-			out.println(InventoryManager.updateInventory(cart));
+			out.println("<p>");
+			for(String line : result) {
+				out.println(line + "<br/>");
+			}
+			out.println("</p>");
 	 } else if (action.equals("admin")) { %>
 		<jsp:include page="admin.jsp">
 		<jsp:param name="view" value="all" />
