@@ -87,9 +87,9 @@ public class InventoryManager {
         }
       }
     }
-    Map<Integer, Map<Item, Integer>> newOrder = new HashMap<>();
-    newOrder.put(OrderManager.getNewOrderNumber(), cart);
     if (cart.size() > 0) {
+      Map<Integer, Map<Item, Integer>> newOrder = new HashMap<>();
+      newOrder.put(OrderManager.getNewOrderNumber(), cart);
       OrderManager.addOrder(newOrder);
     }
     updateDatabase(inventory);
