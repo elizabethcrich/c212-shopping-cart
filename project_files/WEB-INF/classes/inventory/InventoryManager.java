@@ -94,8 +94,6 @@ public class InventoryManager {
     }
     updateDatabase(inventory);
     message.add("Total cost: $" + String.format("%.2f", cost));
-    //debugging
-    message.add(cart.toString());
     return message;
   }
   
