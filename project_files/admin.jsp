@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" %>
-<%@ page import="inventory.Item, inventory.InventoryManager" %>
+<%@ page import="inventory.Item, inventory.InventoryManager, inventory.OrderManager" %>
 
 <jsp:include page="header.jsp"></jsp:include>
 
@@ -21,8 +21,13 @@
 		</ul>
 <%   } else if (view.equals("orders")) { %>
         <h3>Current orders:</h3>
-		
-		
+		<ul>
+		<% Map<Integer, Map<Item, Integer>> allOrders = OrderManager.getAllOrders(); // returns HashMap
+			for (Integer orderNumber : allOrders.keySet()) {
+			  out.println("<li><strong>" + orderNumber + "</strong>: " + allOrders.get(orderNumber) + "</li>");
+			}
+		%>
+		</ul>
 <%      }
    }   else {
 	   
