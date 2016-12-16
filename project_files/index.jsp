@@ -66,7 +66,8 @@
 				String attribName = (String) e.nextElement();
 				session.removeAttribute(attribName);
 			}
-		 // send cart to updateInventory
+		 // send cart to updateInventory - updateInventory calls addOrder
+		 // if I had more time I would call addOrder & it would call updateInventory!
 			ArrayList<String> result = InventoryManager.updateInventory(cart);
 		 // display completion to user
 			out.println("<p>");

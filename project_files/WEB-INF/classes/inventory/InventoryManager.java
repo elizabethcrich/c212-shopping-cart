@@ -74,6 +74,8 @@ public class InventoryManager {
             message.add("I'm sorry, we do not have enough in stock of an item you selected. It has been removed from your purchase.");
             message.add("Item removed: " + item.getName()
               + ", Current stock: " + inventory.get(item));
+            //remove item from cart
+            cart.remove(update);
           }
           // Otherwise send confirmation
           else {
@@ -85,8 +87,15 @@ public class InventoryManager {
         }
       }
     }
+    if (cart.size() > 0) {
+      Map<Integer, Map<Item, Integer>> newOrder = new HashMap<>();
+      newOrder.put(OrderManager.getNewOrderNumber(), cart);
+      OrderManager.addOrder(newOrder);
+    }
     updateDatabase(inventory);
     message.add("Total cost: $" + String.format("%.2f", cost));
+    //debugging
+    message.add(cart.toString());
     return message;
   }
   

@@ -6,8 +6,9 @@
         td { width: auto; padding: 2px 10px; }
         td form { margin:0; }
         .main { width: 840px; margin: 0 auto; padding: 10px 20px; background-color: #FFFFFF; }
-		.signature { width: 840px; margin: 0 auto; padding: 10px 20px; text-align: center; }
+		#signature { width: 840px; margin: 0 auto; padding: 10px 20px; text-align: center; }
 		.main .main { width: 800px; } /* worst solution ever */
+		.main #signature { display: none; }
 </style>
 
 <div class="main">

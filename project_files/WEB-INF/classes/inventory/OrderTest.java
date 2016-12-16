@@ -22,5 +22,6 @@ public class OrderTest {
     Map<Integer, Map<Item, Integer>> order = new HashMap<>();
     order.put(OrderManager.getNewOrderNumber(), cart);
     OrderManager.addOrder(order);
+    //InventoryManager.updateInventory(cart);
   }
 }
