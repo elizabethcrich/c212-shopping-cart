@@ -42,7 +42,7 @@ public class OrderManager {
   }
   
   public static void initializeOrders() throws IOException, FileNotFoundException {
-	orderNumber = 0;
+    orderNumber = 0;
     Map<Integer, Map<Item, Integer>> orders = new HashMap<>();
     FileOutputStream fouts = new FileOutputStream(ORDERS);
     ObjectOutputStream obos = new ObjectOutputStream(fouts);
