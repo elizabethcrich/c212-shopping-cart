@@ -97,4 +97,16 @@ public class InventoryManager {
     return message;
   }
   
+  public static Item search(String phrase) throws IOException, ClassNotFoundException {
+    @SuppressWarnings("unchecked") Map<Item, Integer> inventory = getInventory(); // returns HashMap
+    Item item = new Item();
+    // need to search item.name against %phrase%
+    if (inventory.containsKey(phrase)) { // this won't work
+      System.out.println("inside search");
+      // if found, set item = found item
+    }
+    // return item and display inside url link to item page
+    return item;
+  }
+  
 }
