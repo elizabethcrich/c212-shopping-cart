@@ -1,0 +1,9 @@
+100	Low Gap Trail Map	10.00	3	http://www.hoosierhikerscouncil.org/assets/DNR_Low_Gap_Trails_Map.jpg
+200	Pate Hollow Trail Map	5.00	5	http://www.indianaoutfitters.com/Destinations/Hoosier_National/pate_hollow_trail_map_topo2.gif
+300	Three Lakes Trail Map	10.00	3	http://www.hoosierhikerscouncil.org/assets/DNR_3_Lakes_Trail_Map.jpg
+400	Nebo Ridge Trail Map	8.00	6	https://portfoliolounge.com/uploads/10601/large/10601_17036_7b013944de7590aa2ad0b1d545b1f7ab.jpeg
+500	Peninsula Trail Map	5.00	10	http://www.oldmanoutdoors.net/wordpress1/wp-content/uploads/1544_thumbnail-10241.jpg
+600	Sycamore Loop Trail Map	6.00	4	http://www.indianaoutfitters.com/Destinations/Hoosier_National/wilderness_west_and_east3.gif
+700	Tecumseh Trail Map	40.00	12	https://oldgeezersfunclub.files.wordpress.com/2015/01/tecumseh-map-part-2.jpg
+800	Adventure Hiking Trail Map	25.00	15	https://portfoliolounge.com/uploads/10601/large/10601_17036_8bfee7a4a96f359a4d1acbd7ad70cf03.jpeg
+900	Knobstone Trail Map	50.00	7	http://www.in.gov/dnr/forestry/images/kt_over.jpg
